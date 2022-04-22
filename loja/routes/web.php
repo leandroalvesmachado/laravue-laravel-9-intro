@@ -26,5 +26,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // pesquisando o model product por outro campo da tabela
 Route::get('/product/{product:slug}', [ProductController::class, 'show'])->name('product');
 
+// ADMIN
 Route::get('/admin/products', [AdminProductController::class, 'index'])->name('admin.products');
-Route::get('/admin/products/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+Route::get('/admin/products/create', [AdminProductController::class, 'create'])->name('admin.products.create');
+Route::post('/admin/products', [AdminProductController::class, 'store'])->name('admin.products.store');
+
+Route::get('/admin/products/{product}/edit', [AdminProductController::class, 'edit'])->name('admin.products.edit');
+Route::put('/admin/products/{product}', [AdminProductController::class, 'update'])->name('admin.products.update');
+
+Route::delete('/admin/products/{product}', [AdminProductController::class, 'destroy'])->name('admin.products.destroy');
+
+Route::get('/admin/products/{product}/delete-image', [AdminProductController::class, 'destroyImage'])->name('admin.products.destroyImage');
